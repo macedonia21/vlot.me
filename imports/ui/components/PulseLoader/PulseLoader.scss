@@ -1,0 +1,21 @@
+.div-loader {
+  //position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  min-height: 238px;
+  z-index: 1000;
+
+  i {
+    font-size: 44px;
+  }
+
+  .loader-hidden {
+    display: none;
+  }
+  .loader-active {
+    display: block;
+  }
+}

@@ -1,0 +1,137 @@
+.report-page {
+  font-family: 'Nunito-Regular', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 44px;
+    color: #000;
+  }
+
+  hr {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .report-filter-card {
+    .frontside {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 30px;
+    }
+  }
+  .report-summary-card {
+    .card-summary-title {
+      font-family: 'Nunito-Bold', sans-serif;
+      font-size: 106px;
+      height: 120px;
+      line-height: 120px;
+      color: #343a40;
+    }
+
+    .frontside .card,
+    .backside .card {
+      min-height: 238px;
+    }
+
+    .frontside {
+      position: relative;
+      z-index: 0;
+      margin-bottom: 30px;
+    }
+  }
+
+  .report-chart-card {
+    .frontside .card,
+    .backside .card {
+      min-height: 238px;
+    }
+
+    .frontside {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 30px;
+    }
+  }
+
+  .card {
+    border: none;
+    background: #ffffff;
+    border-radius: 10px;
+  }
+
+  .backside .card a {
+    font-size: 18px;
+    color: #007b5e !important;
+  }
+
+  .frontside .card .card-title,
+  .backside .card .card-title {
+    color: #007b5e !important;
+  }
+
+  .frontside .card .card-body img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+
+  .react-datepicker-wrapper {
+    display: block;
+  }
+  .react-datepicker {
+    font-family: 'Nunito-Regular', sans-serif;
+  }
+
+  .react-tagsinput-tag {
+    background-color: #cde69c;
+    border-radius: 5px;
+    color: #638421;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 1px 5px 0 5px;
+  }
+
+  .unassign-emp-card, .assign-emp-card, .will-unassign-emp-card {
+    .card {
+      border: none;
+      background: #ffffff;
+      border-radius: 10px;
+    }
+
+    .frontside {
+      position: relative;
+      z-index: 0;
+      margin-bottom: 30px;
+    }
+
+    .assign-name-text, .bold-text{
+      font-family: 'Nunito-Bold', sans-serif;
+    }
+  }
+
+  .percentage-14-pt1 {
+    font-size: 14px;
+    padding-top: 1px;
+  }
+
+  .form-control:hover {
+    border-color: hsl(0,0%,70%);
+  }
+  .form-control:hover:focus {
+    border-color: #2684FF;
+  }
+  .form-control:hover:disabled {
+    border-color: #ced4da;
+  }
+  .form-control:disabled {
+    color: hsl(0,0%,60%);
+  }
+}

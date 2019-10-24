@@ -1,0 +1,29 @@
+.navbar {
+  font-family: 'Nunito-Regular', sans-serif;
+  background-color: transparent;
+  * {
+    :hover,
+    :active,
+    :focus {
+      text-decoration: none;
+      background-color: transparent;
+    }
+  }
+
+  a {
+    color: #fff;
+    display: block;
+  }
+  .active {
+    color: #fff;
+    font-family: 'Nunito-Bold', sans-serif;
+  }
+  .navbar-brand a {
+    color: #fff;
+  }
+  .dropdown-item {
+    color: #fff;
+    width: 115px;
+    text-align: center;
+  }
+}

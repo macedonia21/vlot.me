@@ -1,0 +1,27 @@
+.landing-page {
+  font-family: 'Nunito-Regular', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+
+  .container {
+    padding: 3rem;
+  }
+
+  @media only screen and (min-width: 992px) {
+    .landing-image {
+      background-image: url("/img/landing.png");
+      background-repeat: no-repeat;
+      background-color: transparent;
+    }
+  }
+
+  .title-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 491px;
+    color: #000;
+  }
+}

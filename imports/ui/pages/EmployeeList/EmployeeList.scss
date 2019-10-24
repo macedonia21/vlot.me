@@ -1,0 +1,109 @@
+.employee-page {
+  font-family: 'Nunito-Regular', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 44px;
+    color: #000;
+  }
+
+  .emp-search-card {
+    .card {
+      border: none;
+      background: #ffffff;
+      border-radius: 10px;
+    }
+
+    .image-flip:hover .backside,
+    .image-flip.hover .backside {
+      border-radius: .25rem;
+    }
+
+    .mainflip {
+      position: relative;
+    }
+
+    .frontside {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 30px;
+    }
+
+    .backside {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: white;
+    }
+
+    .frontside .card,
+    .backside .card {
+      min-height: 238px;
+    }
+
+    .backside .card a {
+      font-size: 18px;
+      color: #007b5e;
+    }
+
+    .frontside .card .card-title,
+    .backside .card .card-title {
+      color: #007b5e;
+    }
+
+    .frontside .card .card-body img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+    }
+
+    .react-tagsinput {
+      overflow: hidden;
+    }
+
+    .react-tagsinput-tag {
+      background-color: #cde69c;
+      border-radius: 5px;
+      color: #638421;
+      display: inline-block;
+      margin-right: 5px;
+      padding: 1px 5px 0 5px;
+    }
+
+    .react-tagsinput-remove {
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .react-tagsinput-tag a::before {
+      content: " ×";
+    }
+
+    .react-tagsinput-input {
+      border: 0;
+      outline: none;
+      width: 80px;
+    }
+
+    .react-tagsinput--focused {
+      color: #495057;
+      background-color: #fff;
+      border-color: #80bdff;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    .form-control:hover {
+      border-color: hsl(0,0%,70%);
+    }
+    .form-control:hover:focus, .form-control.react-tagsinput--focused:hover{
+      border-color: #2684FF;
+    }
+    .form-control:hover:disabled {
+      border-color: #ced4da;
+    }
+  }
+}

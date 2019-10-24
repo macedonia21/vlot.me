@@ -1,0 +1,23 @@
+.login-spinner {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: rgb(61,106,239);
+  background-image: linear-gradient( 109.6deg, rgba(61,106,239,1) 11.2%, rgba(122,14,190,1) 70.2% );
+
+  i {
+    font-size: 44px;
+  }
+
+  .loader-hidden {
+    display: none;
+  }
+  .loader-active {
+    display: block;
+  }
+}
