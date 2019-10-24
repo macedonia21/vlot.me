@@ -66,7 +66,7 @@ class Login extends React.Component {
         <div className="card mx-auto" style={{ width: '28rem', maxWidth: '80%' }}>
           <div className="card-header">
             <div className="card-body">
-              <h1 className="card-title text-center">Login</h1>
+              <h1 className="card-title text-center">VLOT</h1>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                   <label htmlFor="email">E-Mail Address</label>
