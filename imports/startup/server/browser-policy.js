@@ -19,11 +19,17 @@ allowImageOrigin.forEach(o => BrowserPolicy.content.allowImageOrigin(o));
 /**
  * allowed scripts
  */
-const allowScriptOrigin = ['www.gstatic.com', 'maps.googleapis.com'];
+const allowScriptOrigin = ['*.gstatic.com', '*.googleapis.com'];
 allowScriptOrigin.forEach(o => BrowserPolicy.content.allowScriptOrigin(o));
 
 /**
  * allowed styles
  */
-const allowStyleOrigin = ['www.gstatic.com'];
+const allowStyleOrigin = ['*.gstatic.com', '*.googleapis.com'];
 allowStyleOrigin.forEach(o => BrowserPolicy.content.allowStyleOrigin(o));
+
+/**
+ * allowed all
+ */
+const allowOriginForAll = ['*.gstatic.com', '*.googleapis.com'];
+allowOriginForAll.forEach(o => BrowserPolicy.content.allowOriginForAll(o));

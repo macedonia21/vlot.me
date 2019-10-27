@@ -35,8 +35,8 @@ $theme-colors: (
 
 body {
   font-family: 'Nunito-Regular', sans-serif !important;
-  background: rgb(61,106,239);
-  background-image: linear-gradient( 109.6deg, rgba(61,106,239,1) 11.2%, rgba(122,14,190,1) 70.2% );
+  //background: rgb(61,106,239);
+  //background-image: linear-gradient( 109.6deg, rgba(61,106,239,1) 11.2%, rgba(122,14,190,1) 70.2% );
   min-height: 100vh;
 
   overflow: -moz-scrollbars-none;
@@ -50,12 +50,11 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-track-piece {
   //background-image: linear-gradient( 109.6deg, rgba(61,106,239,0.2) 11.2%, rgba(122,14,190,0.2) 70.2% );
   background-color: white;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+  //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
 }
 body::-webkit-scrollbar-thumb {
   background-image: linear-gradient( 109.6deg, rgba(122,14,190,0.8) 11.2%, rgba(61,106,239,0.8) 70.2% );
-  //background-color: slategray;
-  border: solid 2px white;
+  border: solid 3px white;
   border-radius: 1em;
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
 }

@@ -33,9 +33,10 @@ Meteor.startup(() => {
         _counsellorId: '',
         talents: ['ABAP'],
         fullName: 'Tuan Hoang',
-        email: 'htuan@deloitte.com',
+        email: 'anhtuan.hoangvu@gmail.com',
         hPW: 40,
       },
+      disabled: false,
     });
 
     if (adminId) {

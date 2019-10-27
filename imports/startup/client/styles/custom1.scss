@@ -1,0 +1,194 @@
+/**********************************************************************************************************************/
+/* MODIFIED CSS */
+html {
+  position: relative;
+  min-height: 100% !important;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  color: #21232a;
+  min-width: 360px;
+}
+
+main {
+  padding-top: 30px;
+  padding-bottom: 80px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.6 !important;
+  text-decoration: none;
+}
+
+/**********************************************************************************************************************/
+/* CUSTOM CSS */
+.footer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: transparent;
+}
+
+/**********************************************************************************************************************/
+/* RESULT NUMBER CONTAINER */
+.list-group-item {
+  overflow: hidden;
+  cursor: pointer;
+    -webkit-transition: all .4s ease-out;
+    -moz-transition: all .4s ease-out;
+    transition: all .4s ease-out;
+}
+.list-group-item .result-stat {
+  display: none;
+}
+.list-group-item:hover .result-stat {
+  display: block;
+}
+.list-group-item:first-child{
+  border-top-left-radius: 1rem !important;
+  border-top-right-radius: 1rem !important;
+}
+.list-group-item:last-child{
+  border-bottom-left-radius: 1rem !important;
+  border-bottom-right-radius: 1rem !important;
+}
+.list-group-item-text {
+   text-align: center;
+}
+
+/* RESULT NUMBER */
+h4.list-group-item-heading {
+  font-size: 16px;
+}
+
+.round-result-num {
+  display: inline-block;
+  width: 47px;
+  height: 47px;
+  line-height: 30px;
+  font-size: 22px;
+  background: white;
+  color: #fc4a1a;
+  border: 3px solid #fc4a1a;
+  margin: 3px;
+  padding: 5px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+}
+.round-result-stat {
+  text-decoration: none;
+  display: inline-block;
+  height: 47px;
+  line-height: 30px;
+  font-size: 18px;
+  background: none;
+  margin: 3px 0;
+  padding: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.round-result-num-small {
+  display: inline-block;
+  width: 41px;
+  height: 41px;
+  line-height: 26px;
+  font-size: 20px;
+  background: none;
+  color: #fc4a1a;
+  border: 3px solid #fc4a1a;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+}
+
+/**********************************************************************************************************************/
+/* OFF-CANVAS SIDE BAR */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  right: 36px;
+  top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #21232a;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  width: 36px !important;
+  height: 30px !important;
+  right: 36px !important;
+  top: 36px !important;
+}
+
+.bm-cross-button span {
+  top: -1px !important;
+  right: 7px !important;
+}
+
+.bm-cross-button:hover {
+  opacity: 0.6 !important;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+  height: 36px !important;
+  width: 6px !important;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  /*background: #373a47;*/
+  background: #21232a;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.1em;
+  line-height: 1.8em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  /*fill: #373a47;*/
+  fill: #21232a;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #bdc3c7;
+  padding: 1em;
+}
+
+.bm-item-list a {
+  color: #bdc3c7 !important;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+}
+
+hr.bm-item {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  opacity: 0.1;
+  border-top-color: #bdc3c7;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3) !important;
+}
