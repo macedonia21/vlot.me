@@ -39,11 +39,11 @@
       L: 'DD/MM/YYYY',
       LL: 'D MMMM [năm] YYYY',
       LLL: 'D MMMM [năm] YYYY HH:mm',
-      LLLL: 'dddd, D MMMM [năm] YYYY',
+      LLLL: 'dddd, DD MMMM [năm] YYYY',
       l: 'DD/M/YYYY',
       ll: 'D MMM YYYY',
       lll: 'D MMM YYYY HH:mm',
-      llll: 'ddd, D MMM YYYY',
+      llll: 'ddd, DD MMM YYYY',
       dddd: 'dddd',
     },
     calendar: {

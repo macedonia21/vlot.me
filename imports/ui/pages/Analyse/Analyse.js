@@ -103,7 +103,7 @@ function calcNum2Frequen(rounds) {
       _.flatten(
         _.map(rounds, function(round) {
           return _.filter(_.values(round.result), function(item, index) {
-            return index == 1;
+            return index === 1;
           });
         })
       ),
@@ -128,7 +128,7 @@ function calcNum3Frequen(rounds) {
       _.flatten(
         _.map(rounds, function(round) {
           return _.filter(_.values(round.result), function(item, index) {
-            return index == 2;
+            return index === 2;
           });
         })
       ),
@@ -153,7 +153,7 @@ function calcNum4Frequen(rounds) {
       _.flatten(
         _.map(rounds, function(round) {
           return _.filter(_.values(round.result), function(item, index) {
-            return index == 3;
+            return index === 3;
           });
         })
       ),
@@ -178,7 +178,7 @@ function calcNum5Frequen(rounds) {
       _.flatten(
         _.map(rounds, function(round) {
           return _.filter(_.values(round.result), function(item, index) {
-            return index == 4;
+            return index === 4;
           });
         })
       ),
@@ -203,7 +203,7 @@ function calcNum6Frequen(rounds) {
       _.flatten(
         _.map(rounds, function(round) {
           return _.filter(_.values(round.result), function(item, index) {
-            return index == 5;
+            return index === 5;
           });
         })
       ),
@@ -226,7 +226,7 @@ function calcNum45Frequen(numFrequen) {
   const orderArray = _.range(1, 46);
   _.each(orderArray, function(value, key, list) {
     const item = _.filter(numFrequen, function(freq) {
-      return freq.index == value;
+      return freq.index === value;
     });
     if (item[0] && item[0].count > 0) {
       frequen.push(item[0].count);
@@ -243,7 +243,7 @@ function calcOddEven(frequen) {
     _.reduce(
       frequen,
       function(memo, frequen) {
-        return frequen.index % 2 == 0 ? memo + frequen.count : memo;
+        return frequen.index % 2 === 0 ? memo + frequen.count : memo;
       },
       0
     )
@@ -252,7 +252,7 @@ function calcOddEven(frequen) {
     _.reduce(
       frequen,
       function(memo, frequen) {
-        return frequen.index % 2 == 1 ? memo + frequen.count : memo;
+        return frequen.index % 2 === 1 ? memo + frequen.count : memo;
       },
       0
     )
@@ -427,7 +427,7 @@ class Analyse extends React.Component {
     const lhData = _.union(lhHeader, lhItems);
 
     return (
-      <div className="container analyse-all">
+      <div className="container">
         <h1 className="animated fadeIn">Phân tích bộ số</h1>
         <h5 className="animated fadeIn mb-4">
           <i>* Kết quả phân tích 50 lượt quay số gần nhất.</i>
@@ -437,27 +437,27 @@ class Analyse extends React.Component {
           role="group"
           aria-label="..."
         >
-          <a className="btn btn-success" href="/phantich">
+          <NavLink className="btn btn-default" to="/phantich">
             Bộ số
-          </a>
-          <a className="btn btn-default" href="/phantich/so1">
+          </NavLink>
+          <NavLink className="btn btn-default" to="/phantich/so1">
             Số 1
-          </a>
-          <a className="btn btn-default" href="/phantich/so2">
+          </NavLink>
+          <NavLink className="btn btn-default" to="/phantich/so2">
             Số 2
-          </a>
-          <a className="btn btn-default" href="/phantich/so3">
+          </NavLink>
+          <NavLink className="btn btn-default" to="/phantich/so3">
             Số 3
-          </a>
-          <a className="btn btn-default" href="/phantich/so4">
+          </NavLink>
+          <NavLink className="btn btn-default" to="/phantich/so4">
             Số 4
-          </a>
-          <a className="btn btn-default" href="/phantich/so5">
+          </NavLink>
+          <NavLink className="btn btn-default" to="/phantich/so5">
             Số 5
-          </a>
-          <a className="btn btn-default" href="/phantich/so6">
+          </NavLink>
+          <NavLink className="btn btn-default" to="/phantich/so6">
             Số 6
-          </a>
+          </NavLink>
         </div>
         {!roundsReady && <PulseLoader />}
         {roundsReady && (
@@ -468,7 +468,7 @@ class Analyse extends React.Component {
                   width="100%"
                   height="320px"
                   chartType="ComboChart"
-                  loader={<div>Đang tải đồ thị...</div>}
+                  loader={<PulseLoader />}
                   data={roundsFrequenData}
                   options={{
                     // Animation
@@ -484,6 +484,8 @@ class Analyse extends React.Component {
                       title: 'Số',
                       textStyle: { fontName: 'Roboto' },
                       titleTextStyle: { fontName: 'Roboto' },
+                      minValue: 1,
+                      maxValue: 45,
                     },
                     legend: {
                       textStyle: { fontName: 'Roboto' },
@@ -510,14 +512,14 @@ class Analyse extends React.Component {
                   width="100%"
                   height="320px"
                   chartType="ColumnChart"
-                  loader={<div>Đang tải đồ thị...</div>}
+                  loader={<PulseLoader />}
                   data={rounds6PosFrequenData}
                   options={{
                     // Animation
                     animation: {
-                      duration: 100,
+                      duration: 1000,
                       easing: 'out',
-                      startup: false,
+                      startup: true,
                     },
                     // Display options
                     fontName: 'Roboto',
@@ -526,6 +528,8 @@ class Analyse extends React.Component {
                       title: 'Số',
                       textStyle: { fontName: 'Roboto' },
                       titleTextStyle: { fontName: 'Roboto' },
+                      minValue: 1,
+                      maxValue: 45,
                     },
                     legend: {
                       textStyle: { fontName: 'Roboto' },
@@ -587,7 +591,7 @@ class Analyse extends React.Component {
                   width="100%"
                   height="320px"
                   chartType="PieChart"
-                  loader={<div>Đang tải đồ thị...</div>}
+                  loader={<PulseLoader />}
                   data={oeData}
                   options={{
                     fontName: 'Roboto',
@@ -608,7 +612,7 @@ class Analyse extends React.Component {
                   width="100%"
                   height="320px"
                   chartType="PieChart"
-                  loader={<div>Đang tải đồ thị...</div>}
+                  loader={<PulseLoader />}
                   data={lhData}
                   options={{
                     fontName: 'Roboto',
@@ -670,8 +674,14 @@ Analyse.propTypes = {
 
 export default withTracker(() => {
   const roundsSub = Meteor.subscribe('rounds50Latest');
-  const rounds = Rounds.find().fetch();
-  const numGroupFrequens = calcGroupFrequen(calcFrequen(Rounds.find().fetch()));
+  const rounds = Rounds.find(
+    {},
+    {
+      sort: { index: -1 },
+      limit: 50,
+    }
+  ).fetch();
+  const numGroupFrequens = calcGroupFrequen(calcFrequen(rounds));
   const roundsReady = roundsSub.ready() && !!rounds && !!numGroupFrequens;
   return {
     roundsReady,

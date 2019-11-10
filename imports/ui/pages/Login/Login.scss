@@ -1,6 +1,7 @@
 .login-page {
   font-family: "Nunito-Regular", sans-serif;
   margin-top: 15px;
+
   .form-signin {
     width: 100%;
     max-width: 330px;
@@ -35,7 +36,7 @@
     justify-content: space-between;
   }
   .card {
-    border-radius: 10px;
+    border-radius: 1rem;
   }
   .card-header {
     background-color: #fff;
@@ -51,5 +52,8 @@
   }
   .form-control:hover:disabled {
     border-color: #ced4da;
+  }
+  .text-webkit-center {
+    text-align: -webkit-center;
   }
 }

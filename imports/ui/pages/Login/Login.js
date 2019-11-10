@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 // import components
 import Alert from '../../components/Alert';
@@ -21,17 +22,18 @@ class Login extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePasswordShow = this.handlePasswordShow.bind(this);
+    this.reCaptchaChange = this.reCaptchaChange.bind(this);
   }
 
   componentWillMount() {
     if (Meteor.userId()) {
-      return this.props.history.push('/report');
+      return this.props.history.push('/themluot');
     }
   }
 
   shouldComponentUpdate(nextProps) {
     if (Meteor.userId()) {
-      nextProps.history.push('/report');
+      nextProps.history.push('/themluot');
       return false;
     }
     return true;
@@ -54,6 +56,10 @@ class Login extends React.Component {
     });
   }
 
+  reCaptchaChange(value) {
+    return null;
+  }
+
   render() {
     const { isPasswordShown, email, password } = this.state;
 
@@ -63,13 +69,16 @@ class Login extends React.Component {
 
     return (
       <section className="login-page">
-        <div className="card mx-auto" style={{ width: '28rem', maxWidth: '80%' }}>
+        <div
+          className="card mx-auto"
+          style={{ width: '28rem', maxWidth: '80%' }}
+        >
           <div className="card-header">
             <div className="card-body">
-              <h1 className="card-title text-center">VLOT</h1>
+              <h1 className="card-title text-center">Đăng nhập</h1>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                  <label htmlFor="email">E-Mail Address</label>
+                  <label htmlFor="email">Tài khoản</label>
                   <input
                     id="email"
                     type="email"
@@ -82,7 +91,7 @@ class Login extends React.Component {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="password">Password</label>
+                  <label htmlFor="password">Mật khẩu</label>
                   <div className="input-group">
                     <input
                       id="password"
@@ -116,12 +125,18 @@ class Login extends React.Component {
                     </NavLink>
                   )}
                 </div>
+                <div className="form-group no-margin text-webkit-center">
+                  <ReCAPTCHA
+                    sitekey="6Lcy9cEUAAAAABwzST0q1Dx57nPKT4jGbpVIqTEA"
+                    onChange={this.reCaptchaChange}
+                  />
+                </div>
                 <div className="form-group no-margin">
                   <button
                     type="submit"
                     className="btn btn-primary btn-block mb-2"
                   >
-                    Login
+                    Đăng nhập
                   </button>
                 </div>
               </form>

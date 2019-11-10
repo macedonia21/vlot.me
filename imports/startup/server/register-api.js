@@ -21,5 +21,11 @@ import '../../api/assignments/publications.js';
 import '../../api/rounds/methods.js';
 import '../../api/rounds/publications.js';
 
+// predict rounds api
+import '../../api/predictRounds/methods.js';
+import '../../api/predictRounds/publications.js';
+
 // import another api
 import '../../api/method.js';
+import '../../api/moment_vi.js';
+import '../../api/numeral_vi.js';

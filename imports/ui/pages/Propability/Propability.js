@@ -42,8 +42,8 @@ class Propability extends React.Component {
         <p>
           Một bộ số Vietlott là một bộ 6 số trong tập hợp các số từ 01 đến 45
           hay còn gọi là 6/45. Có tất cả <b>8.145.060</b>
-          bộ số có thể phát sinh hay xác suất để thắng Jackpot (Giải đặc biệt)
-          là&nbsp;
+          &nbsp;bộ số có thể phát sinh hay xác suất để thắng Jackpot (Giải đặc
+          biệt) là&nbsp;
           <b>1 phần 8.145.060</b>
         </p>
         <h3>Xác suất thắng giải</h3>
@@ -54,6 +54,7 @@ class Propability extends React.Component {
               <thead>
                 <tr>
                   <th>Giải</th>
+                  <th>Kết quả</th>
                   <th>Giá trị</th>
                   <th>Xác suất</th>
                 </tr>
@@ -61,21 +62,53 @@ class Propability extends React.Component {
               <tbody>
                 <tr>
                   <th>Jackpot</th>
+                  <td>
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle text-danger mr-1" />
+                  </td>
                   <td>12.000.000.000 cộng dồn</td>
                   <td>1 / 8.145.060</td>
                 </tr>
                 <tr>
                   <th>Giải Nhất</th>
+                  <td>
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle-o text-danger mr-1" />
+                  </td>
                   <td>10.000.000</td>
                   <td>1 / 34.808</td>
                 </tr>
                 <tr>
                   <th>Giải Nhì</th>
+                  <td>
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle-o text-danger mr-1" />
+                    <span className="fa fa-circle-o text-danger mr-1" />
+                  </td>
                   <td>300.000</td>
                   <td>1 / 733</td>
                 </tr>
                 <tr>
                   <th>Giải Ba</th>
+                  <td>
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle text-danger mr-1" />
+                    <span className="fa fa-circle-o text-danger mr-1" />
+                    <span className="fa fa-circle-o text-danger mr-1" />
+                    <span className="fa fa-circle-o text-danger mr-1" />
+                  </td>
                   <td>30.000</td>
                   <td>1 / 45</td>
                 </tr>
@@ -115,19 +148,19 @@ class Propability extends React.Component {
                   <td>740.278</td>
                   <td>9,09%</td>
                 </tr>
-                <tr className="active">
+                <tr className="bg-light">
                   <th>C2 / 4L</th>
                   <td>2 số Chẵn, 4 số Lẻ</td>
                   <td>2.045.505</td>
                   <td>25,11%</td>
                 </tr>
-                <tr className="active">
+                <tr className="bg-light">
                   <th>C3 / 3L</th>
                   <td>3 số Chẵn, 3 số Lẻ</td>
                   <td>2.727.340</td>
                   <td>33,48%</td>
                 </tr>
-                <tr className="active">
+                <tr className="bg-light">
                   <th>C4 / 2L</th>
                   <td>4 số Chẵn, 2 số Lẻ</td>
                   <td>1.850.695</td>
@@ -181,19 +214,19 @@ class Propability extends React.Component {
                   <td>605.682</td>
                   <td>7,44%</td>
                 </tr>
-                <tr className="active">
+                <tr className="bg-light">
                   <th>T2 / 4X</th>
                   <td>2 số Tài, 4 số Xỉu</td>
                   <td>1.850.695</td>
                   <td>22,72%</td>
                 </tr>
-                <tr className="active">
+                <tr className="bg-light">
                   <th>T3 / 3X</th>
                   <td>3 số Tài, 3 số Xỉu</td>
                   <td>2.727.340</td>
                   <td>33,48%</td>
                 </tr>
-                <tr className="active">
+                <tr className="bg-light">
                   <th>T4 / 2X</th>
                   <td>4 số Tài, 2 số Xỉu</td>
                   <td>2.045.505</td>
@@ -238,19 +271,19 @@ class Propability extends React.Component {
                   <td>63.763</td>
                   <td>0,78%</td>
                 </tr>
-                <tr className="active">
+                <tr className="bg-light">
                   <th>T68 - T114</th>
                   <td>Tổng 6 số có từ 68 đến 114</td>
                   <td>1.737.866</td>
                   <td>21,34%</td>
                 </tr>
-                <tr className="active">
+                <tr className="bg-light">
                   <th>T115 - T161</th>
                   <td>Tổng 6 số có từ 115 đến 161</td>
                   <td>4.541.802</td>
                   <td>55,76%</td>
                 </tr>
-                <tr className="active">
+                <tr className="bg-light">
                   <th>T162 - T208</th>
                   <td>Tổng 6 số có từ 162 đến 208</td>
                   <td>1.737.866</td>
@@ -282,19 +315,19 @@ class Propability extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                <tr className="active">
+                <tr className="bg-light">
                   <th>Đ6</th>
                   <td>6 số đuôi khác nhau</td>
                   <td>1.708.100</td>
                   <td>20,97%</td>
                 </tr>
-                <tr className="active">
+                <tr className="bg-light">
                   <th>Đ5</th>
                   <td>5 số đuôi khác nhau</td>
                   <td>4.048.680</td>
                   <td>49,71%</td>
                 </tr>
-                <tr className="active">
+                <tr className="bg-light">
                   <th>Đ4</th>
                   <td>4 số đuôi khác nhau</td>
                   <td>1.850.695</td>
@@ -339,13 +372,13 @@ class Propability extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                <tr className="active">
+                <tr className="bg-light">
                   <th>L0</th>
                   <td>Không xuất hiện cặp số liên tiếp</td>
                   <td>3.838.380</td>
                   <td>47,13%</td>
                 </tr>
-                <tr className="active">
+                <tr className="bg-light">
                   <th>L2</th>
                   <td>1 cặp số liên tiếp</td>
                   <td>3.290.040</td>

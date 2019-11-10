@@ -33,15 +33,23 @@ $theme-colors: (
   src: url('/font/Nunito-Regular.ttf');
 }
 
+html {
+  position: relative;
+  min-height: 100% !important;
+}
+
 body {
   font-family: 'Nunito-Regular', sans-serif !important;
   //background: rgb(61,106,239);
   //background-image: linear-gradient( 109.6deg, rgba(61,106,239,1) 11.2%, rgba(122,14,190,1) 70.2% );
   min-height: 100vh;
+  min-width: 360px;
 
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
   overflow-y: scroll;
+
+  color: #21232a !important;
 }
 body::-webkit-scrollbar {
   background: transparent;
@@ -53,8 +61,9 @@ body::-webkit-scrollbar-track-piece {
   //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
 }
 body::-webkit-scrollbar-thumb {
-  background-image: linear-gradient( 109.6deg, rgba(122,14,190,0.8) 11.2%, rgba(61,106,239,0.8) 70.2% );
-  border: solid 3px white;
+  background-color: #007bff;
+  //background-image: linear-gradient( 109.6deg, rgba(122,14,190,0.8) 11.2%, rgba(61,106,239,0.8) 70.2% );
+  border: solid 2px white;
   border-radius: 1em;
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
 }

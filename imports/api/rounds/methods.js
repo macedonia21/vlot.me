@@ -4,6 +4,8 @@ import { check, Match } from 'meteor/check';
 import { HTTP } from 'meteor/http';
 import { Roles } from 'meteor/alanning:roles';
 import moment from 'moment/moment';
+import { Jobs } from 'meteor/msavin:sjobs';
+import * as Functions from '../functions.js';
 
 import Rounds from './rounds.js';
 
@@ -40,11 +42,11 @@ if (Meteor.isServer) {
       roundResult.push(roundNo5);
       roundResult.push(roundNo6);
 
-      const oddEven = calcOneOddEven(roundResult);
-      const lowHigh = calcOneLowHigh(roundResult);
-      const roundSum = calcOneSum(roundResult);
-      const lastNumType = calcLastNumType(roundResult);
-      const seqNumType = calcSeqNumType(roundResult);
+      const oddEven = Functions.calcOneOddEven(roundResult);
+      const lowHigh = Functions.calcOneLowHigh(roundResult);
+      const roundSum = Functions.calcOneSum(roundResult);
+      const lastNumType = Functions.calcLastNumType(roundResult);
+      const seqNumType = Functions.calcSeqNumType(roundResult);
 
       const roundDelta = [];
       roundDelta.push(roundNo2 - roundNo1);
@@ -373,15 +375,15 @@ if (Meteor.isServer) {
       let statisticRate = {};
 
       if (roundIndex === 1) {
-        statisticRate[statisticTranslate(oddEvenType)] = {
+        statisticRate[Functions.statisticTranslate(oddEvenType)] = {
           count: 1,
           lastDate: moment(roundDate).format('YYYY-MM-DD'),
         };
-        statisticRate[statisticTranslate(lowHighType)] = {
+        statisticRate[Functions.statisticTranslate(lowHighType)] = {
           count: 1,
           lastDate: moment(roundDate).format('YYYY-MM-DD'),
         };
-        statisticRate[statisticTranslate(sumType)] = {
+        statisticRate[Functions.statisticTranslate(sumType)] = {
           count: 1,
           lastDate: moment(roundDate).format('YYYY-MM-DD'),
         };
@@ -398,38 +400,42 @@ if (Meteor.isServer) {
           index: roundIndex - 1,
         }).statisticRate;
         statisticRate = previousStatisticRate;
-        if (!previousStatisticRate[statisticTranslate(oddEvenType)]) {
-          statisticRate[statisticTranslate(oddEvenType)] = {
+        if (!previousStatisticRate[Functions.statisticTranslate(oddEvenType)]) {
+          statisticRate[Functions.statisticTranslate(oddEvenType)] = {
             count: 1,
             lastDate: moment(roundDate).format('YYYY-MM-DD'),
           };
         } else {
-          statisticRate[statisticTranslate(oddEvenType)] = {
+          statisticRate[Functions.statisticTranslate(oddEvenType)] = {
             count:
-              previousStatisticRate[statisticTranslate(oddEvenType)].count + 1,
+              previousStatisticRate[Functions.statisticTranslate(oddEvenType)]
+                .count + 1,
             lastDate: moment(roundDate).format('YYYY-MM-DD'),
           };
         }
-        if (!previousStatisticRate[statisticTranslate(lowHighType)]) {
-          statisticRate[statisticTranslate(lowHighType)] = {
+        if (!previousStatisticRate[Functions.statisticTranslate(lowHighType)]) {
+          statisticRate[Functions.statisticTranslate(lowHighType)] = {
             count: 1,
             lastDate: moment(roundDate).format('YYYY-MM-DD'),
           };
         } else {
-          statisticRate[statisticTranslate(lowHighType)] = {
+          statisticRate[Functions.statisticTranslate(lowHighType)] = {
             count:
-              previousStatisticRate[statisticTranslate(lowHighType)].count + 1,
+              previousStatisticRate[Functions.statisticTranslate(lowHighType)]
+                .count + 1,
             lastDate: moment(roundDate).format('YYYY-MM-DD'),
           };
         }
-        if (!previousStatisticRate[statisticTranslate(sumType)]) {
-          statisticRate[statisticTranslate(sumType)] = {
+        if (!previousStatisticRate[Functions.statisticTranslate(sumType)]) {
+          statisticRate[Functions.statisticTranslate(sumType)] = {
             count: 1,
             lastDate: moment(roundDate).format('YYYY-MM-DD'),
           };
         } else {
-          statisticRate[statisticTranslate(sumType)] = {
-            count: previousStatisticRate[statisticTranslate(sumType)].count + 1,
+          statisticRate[Functions.statisticTranslate(sumType)] = {
+            count:
+              previousStatisticRate[Functions.statisticTranslate(sumType)]
+                .count + 1,
             lastDate: moment(roundDate).format('YYYY-MM-DD'),
           };
         }
@@ -602,288 +608,215 @@ if (Meteor.isServer) {
           );
           resultData.isJackpot = resultData.jackpotCount > 0;
 
-          console.log(resultData);
           return resultData;
         } catch (ex) {
           throw new Meteor.Error('parse-error', ex.message);
         }
       } else {
-        throw new Meteor.Error(
-          'get-error',
-          'Khong lay duoc ket qua ky ' + '00001'
-        );
+        throw new Meteor.Error('get-error', 'Không lấy được kết quả');
       }
+    },
+    'allJobs.start'() {
+      // if (
+      //   !Roles.userIsInRole(Meteor.userId(), 'superadmin') &&
+      //   !Roles.userIsInRole(Meteor.userId(), 'admin')
+      // ) {
+      //   throw new Meteor.Error('Not authorized');
+      // }
+
+      Jobs.start();
+    },
+    'allJobs.stop'() {
+      // if (
+      //   !Roles.userIsInRole(Meteor.userId(), 'superadmin') &&
+      //   !Roles.userIsInRole(Meteor.userId(), 'admin')
+      // ) {
+      //   throw new Meteor.Error('Not authorized');
+      // }
+
+      Jobs.stop();
+    },
+    'getResultJob.register'() {
+      Jobs.register({
+        'httpResult645.get'() {
+          const instance = this;
+
+          const maxRound = Rounds.find(
+            {},
+            {
+              fields: {
+                index: 1,
+              },
+              sort: { index: -1 },
+              limit: 1,
+            }
+          ).fetch();
+          const maxRoundIndex = maxRound && maxRound[0] ? maxRound[0].index : 0;
+          const roundIndex = maxRoundIndex + 1;
+
+          const jsdom = require('jsdom');
+          const { JSDOM } = jsdom;
+          const s = `0000${roundIndex}`;
+          const index = s.substring(roundIndex.toString().length - 1, s.length);
+          const result = HTTP.get(
+            `http://vietlott.vn/vi/trung-thuong/ket-qua-trung-thuong/645?id=${index}&nocatche=1`
+          );
+          if (result) {
+            instance.replicate({
+              in: {
+                minutes: 1,
+              },
+            });
+
+            // alternatively, you can use instance.remove to save storage
+            instance.success(result.result);
+
+            try {
+              const resultData = {
+                index: 0,
+                isJackpot: false,
+                price: 12000000000,
+                result: {
+                  num1: 3,
+                  num2: 4,
+                  num3: 14,
+                  num4: 20,
+                  num5: 25,
+                  num6: 35,
+                },
+                registered: '',
+                jackpotCount: 0,
+              };
+              const dom = new JSDOM(result.content);
+              const divKetQuaTitle = dom.window.document.querySelectorAll(
+                'div[class="chitietketqua_title"]'
+              );
+              const divDaySoKetQua = dom.window.document.querySelectorAll(
+                'div[class="day_so_ket_qua_v2"]'
+              );
+              const divSoTien = dom.window.document.querySelectorAll(
+                'div[class="so_tien"]'
+              );
+              const divBangChiTiet = dom.window.document.querySelectorAll(
+                'div[class="table-responsive"]'
+              );
+
+              // Index
+              resultData.index = parseInt(
+                divKetQuaTitle[0].children[2].children[0].textContent.replace(
+                  /#/g,
+                  ''
+                )
+              );
+
+              // Date
+              const splitDays = divKetQuaTitle[0].children[2].children[1].textContent.split(
+                '/'
+              );
+              resultData.registered = `${splitDays[2]}-${splitDays[1]}-${
+                splitDays[0]
+              }`;
+
+              // Result Numbers
+              resultData.result.num1 = parseInt(
+                divDaySoKetQua[0].children[0].textContent
+              );
+              resultData.result.num2 = parseInt(
+                divDaySoKetQua[0].children[1].textContent
+              );
+              resultData.result.num3 = parseInt(
+                divDaySoKetQua[0].children[2].textContent
+              );
+              resultData.result.num4 = parseInt(
+                divDaySoKetQua[0].children[3].textContent
+              );
+              resultData.result.num5 = parseInt(
+                divDaySoKetQua[0].children[4].textContent
+              );
+              resultData.result.num6 = parseInt(
+                divDaySoKetQua[0].children[5].textContent
+              );
+
+              // Price
+              resultData.price = parseInt(
+                divSoTien[0].children[0].textContent.replace(/\./g, '')
+              );
+
+              // Number of Jackpot
+              resultData.jackpotCount = parseInt(
+                divBangChiTiet[0].children[0].children[1].children[0]
+                  .children[2].textContent
+              );
+              resultData.isJackpot = resultData.jackpotCount > 0;
+
+              const newRoundRequestData = {
+                roundIndex: resultData.index,
+                roundDate: new Date(resultData.registered),
+                roundPrice: resultData.price,
+                roundJackpotCount: resultData.jackpotCount,
+                roundNo1: resultData.result.num1,
+                roundNo2: resultData.result.num2,
+                roundNo3: resultData.result.num3,
+                roundNo4: resultData.result.num4,
+                roundNo5: resultData.result.num5,
+                roundNo6: resultData.result.num6,
+              };
+              Meteor.call('insertNewRound.post', newRoundRequestData, error => {
+                if (error) {
+                  console.log(`Errot insert new round ${resultData.index}`);
+                } else {
+                  console.log(
+                    `Successfully insert new round ${resultData.index}`
+                  );
+
+                  Meteor.call(
+                    'newPredictRound.post',
+                    resultData.index + 1,
+                    err => {
+                      if (err) {
+                        console.log(
+                          `Errot forecase new round ${resultData.index + 1}`
+                        );
+                      } else {
+                        console.log(
+                          `Successfully forecast new round ${resultData.index +
+                            1}`
+                        );
+                      }
+                    }
+                  );
+                }
+              });
+            } catch (ex) {
+              console.log(ex.message);
+            }
+          } else {
+            instance.reschedule({
+              in: {
+                minutes: 1,
+              },
+            });
+          }
+        },
+      });
+
+      // Kickstart Jobs
+      console.log('Kickstart httpResult645.get');
+      Jobs.run('httpResult645.get', {
+        singular: true,
+      });
+    },
+    'getResultJob.start'() {
+      console.log('Start httpResult645.get');
+      Jobs.start('httpResult645.get');
+    },
+    'getResultJob.stop'() {
+      console.log('Stop httpResult645.get');
+      Jobs.stop('httpResult645.get');
+    },
+    'getResultJob.clear'() {
+      console.log('Clear httpResult645.get');
+      Jobs.clear('*', 'httpResult645.get', r => console.log(r));
     },
   });
 }
-
-// One round Odd Even
-calcOneOddEven = roundResult => {
-  return _.countBy(roundResult, function(num) {
-    return num % 2 === 0 ? 'even' : 'odd';
-  });
-};
-// One round Low High
-calcOneLowHigh = roundResult => {
-  return _.countBy(roundResult, function(num) {
-    return num < 23 ? 'low' : 'high';
-  });
-};
-// One round Sum
-calcOneSum = roundResult => {
-  return _.reduce(
-    roundResult,
-    function(memo, num) {
-      return memo + num;
-    },
-    0
-  );
-};
-// One round Last Number Type
-calcLastNumType = roundResult => {
-  return getLastNumType(roundResult);
-};
-// One round Continuos Number Type
-calcSeqNumType = roundResult => {
-  return getSequenceType(roundResult);
-};
-getLastNumType = combi => {
-  const lastNumTypeSymbol = 'Đ';
-  const modCombi = _.sortBy(
-    _.map(combi, function(num) {
-      return num % 10;
-    })
-  );
-
-  const convert = _.countBy(
-    _.values(
-      _.countBy(modCombi, function(num) {
-        return num;
-      })
-    ),
-    function(num) {
-      return num;
-    }
-  );
-
-  if (convert['1'] === 6) {
-    return `${lastNumTypeSymbol}6`;
-  }
-  if (convert['1'] === 4) {
-    return `${lastNumTypeSymbol}5`;
-  }
-  if (convert['1'] === 3) {
-    return `${lastNumTypeSymbol}4`;
-  }
-  if (convert['1'] === 2) {
-    if (convert['2'] === 2) {
-      return `${lastNumTypeSymbol}4`;
-    }
-    if (convert['4'] === 1) {
-      return `${lastNumTypeSymbol}3`;
-    }
-  } else if (convert['1'] === 1) {
-    return `${lastNumTypeSymbol}3`;
-  } else if (!convert['1']) {
-    if (convert['2'] === 1) {
-      return `${lastNumTypeSymbol}2`;
-    }
-    if (convert['2'] === 3) {
-      return `${lastNumTypeSymbol}3`;
-    }
-    if (convert['3'] === 2) {
-      return `${lastNumTypeSymbol}2`;
-    }
-  }
-  return `${lastNumTypeSymbol}1`;
-};
-getSequenceType = combi => {
-  const lastSeqTypeSymbol = 'L';
-  const sortedCombi = _.sortBy(combi);
-  const modCombi = _.take(
-    _.map(sortedCombi, function(value, key, list) {
-      if (key < list.length - 1) {
-        temp = list[key + 1] - value;
-        if (temp === 1) {
-          return temp;
-        }
-        return 0;
-      }
-      return 0;
-    }),
-    5
-  );
-
-  switch (modCombi.toString()) {
-    case '0,0,0,0,0':
-      return `${lastSeqTypeSymbol}0`;
-    case '0,0,0,0,1':
-    case '0,0,0,1,0':
-    case '0,0,1,0,0':
-    case '0,1,0,0,0':
-    case '1,0,0,0,0':
-      return `${lastSeqTypeSymbol}2`;
-    case '0,0,1,0,1':
-    case '0,1,0,0,1':
-    case '1,0,0,0,1':
-    case '0,1,0,1,0':
-    case '1,0,0,1,0':
-    case '1,0,1,0,0':
-      return `${lastSeqTypeSymbol}2${lastSeqTypeSymbol}2`;
-    case '1,0,1,0,1':
-      return `${lastSeqTypeSymbol}2${lastSeqTypeSymbol}2${lastSeqTypeSymbol}2`;
-    case '0,0,0,1,1':
-    case '0,0,1,1,0':
-    case '0,1,1,0,0':
-    case '1,1,0,0,0':
-      return `${lastSeqTypeSymbol}3`;
-    case '0,1,0,1,1':
-    case '1,0,0,1,1':
-    case '1,0,1,1,0':
-    case '0,1,1,0,1':
-    case '1,1,0,0,1':
-    case '1,1,0,1,0':
-      return `${lastSeqTypeSymbol}3${lastSeqTypeSymbol}2`;
-    case '1,1,0,1,1':
-      return `${lastSeqTypeSymbol}3${lastSeqTypeSymbol}3`;
-    case '0,0,1,1,1':
-    case '0,1,1,1,0':
-    case '1,1,1,0,0':
-      return `${lastSeqTypeSymbol}4`;
-    case '1,0,1,1,1':
-    case '1,1,1,0,1':
-      return `${lastSeqTypeSymbol}4${lastSeqTypeSymbol}2`;
-    case '0,1,1,1,1':
-    case '1,1,1,1,0':
-      return `${lastSeqTypeSymbol}5`;
-    case '1,1,1,1,1':
-      return `${lastSeqTypeSymbol}6`;
-  }
-  return `${lastSeqTypeSymbol}1`;
-};
-statisticTranslate = input => {
-  let output = '';
-  switch (input) {
-    // Odd Even 1st way
-    case 'C0 / 6L':
-      output = 'CL06';
-      break;
-    case 'C1 / 5L':
-      output = 'CL15';
-      break;
-    case 'C2 / 4L':
-      output = 'CL24';
-      break;
-    case 'C3 / 3L':
-      output = 'CL33';
-      break;
-    case 'C4 / 2L':
-      output = 'CL42';
-      break;
-    case 'C5 / 1L':
-      output = 'CL51';
-      break;
-    case 'C6 / 0L':
-      output = 'CL60';
-      break;
-    // Odd Even 2st way
-    case 'CL06':
-      output = 'C0 / 6L';
-      break;
-    case 'CL15':
-      output = 'C1 / 5L';
-      break;
-    case 'CL24':
-      output = 'C2 / 4L';
-      break;
-    case 'CL33':
-      output = 'C3 / 3L';
-      break;
-    case 'CL42':
-      output = 'C4 / 2L';
-      break;
-    case 'CL51':
-      output = 'C5 / 1L';
-      break;
-    case 'CL60':
-      output = 'C6 / 0L';
-      break;
-    // Low High 1st way
-    case 'T0 / 6X':
-      output = 'TX06';
-      break;
-    case 'T1 / 5X':
-      output = 'TX15';
-      break;
-    case 'T2 / 4X':
-      output = 'TX24';
-      break;
-    case 'T3 / 3X':
-      output = 'TX33';
-      break;
-    case 'T4 / 2X':
-      output = 'TX42';
-      break;
-    case 'T5 / 1X':
-      output = 'TX51';
-      break;
-    case 'T6 / 0X':
-      output = 'TX60';
-      break;
-    // Odd Even 2st way
-    case 'TX06':
-      output = 'T0 / 6X';
-      break;
-    case 'TX15':
-      output = 'T1 / 5X';
-      break;
-    case 'TX24':
-      output = 'T2 / 4X';
-      break;
-    case 'TX33':
-      output = 'T3 / 3X';
-      break;
-    case 'TX42':
-      output = 'T4 / 2X';
-      break;
-    case 'TX51':
-      output = 'T5 / 1X';
-      break;
-    case 'TX60':
-      output = 'T6 / 0X';
-      break;
-    // Sum 1st way
-    case 'T21 - T67':
-      output = 'T21';
-      break;
-    case 'T68 - T114':
-      output = 'T68';
-      break;
-    case 'T115 - T161':
-      output = 'T115';
-      break;
-    case 'T162 - T208':
-      output = 'T162';
-      break;
-    case 'T209 - T255':
-      output = 'T209';
-      break;
-    // Sum 2st way
-    case 'T21':
-      output = 'T21 - T67';
-      break;
-    case 'T68':
-      output = 'T68 - T114';
-      break;
-    case 'T115':
-      output = 'T115 - T161';
-      break;
-    case 'T162':
-      output = 'T162 - T208';
-      break;
-    case 'T209':
-      output = 'T209 - T255';
-      break;
-  }
-  return output;
-};

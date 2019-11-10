@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
+import moment from 'moment';
 import Rounds from './rounds.js';
 
 if (Meteor.isServer) {
@@ -24,6 +25,15 @@ if (Meteor.isServer) {
       {
         sort: { index: -1 },
         limit: 50,
+      }
+    );
+  });
+  Meteor.publish('rounds1Latest', function roundsPublication() {
+    return Rounds.find(
+      {},
+      {
+        sort: { index: -1 },
+        limit: 1,
       }
     );
   });
@@ -105,6 +115,18 @@ if (Meteor.isServer) {
         },
         sort: { index: -1 },
         limit,
+      }
+    );
+  });
+  Meteor.publish('maxRoundIndex', function roundsPublication() {
+    return Rounds.find(
+      {},
+      {
+        fields: {
+          index: 1,
+        },
+        sort: { index: -1 },
+        limit: 1,
       }
     );
   });

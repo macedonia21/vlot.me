@@ -21,15 +21,10 @@ class Result extends React.Component {
 
     this.state = {
       // Data
-      resultData: [],
       skip: 0,
       page: 5,
       loadedFull: false,
     };
-  }
-
-  componentDidMount() {
-    // this.fetchResultData();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -50,23 +45,24 @@ class Result extends React.Component {
       });
     }
 
-    console.log(rounds);
-
     return (
       <div className="container">
-        <h1>Kết quả theo ngày (50 lượt gần nhất)</h1>
+        <h1>Kết quả theo ngày</h1>
+        <h5 className="animated fadeIn mb-4">
+          <i>* 50 lượt quay số gần nhất</i>
+        </h5>
         {!roundsReady && <PulseLoader />}
         {roundsReady && (
           <div className="list-group result-list">{resultRender}</div>
         )}
-        {roundsReady && !loadedFull && (
+        {roundsReady && !loadedFull && rounds && rounds.length > page && (
           <button
             type="button"
-            className="btn btn-primary btn-block mt-4"
+            className="btn btn-primary btn-block mb-4"
             onClick={() => {
               this.setState({
                 skip: skip + 1,
-                loadedFull: page * (1 + skip) >= 50,
+                loadedFull: page * (2 + skip) >= Math.min(50, rounds.length),
               });
             }}
           >
@@ -93,7 +89,13 @@ Result.propTypes = {
 
 export default withTracker(() => {
   const roundsSub = Meteor.subscribe('rounds50Latest');
-  const rounds = Rounds.find().fetch();
+  const rounds = Rounds.find(
+    {},
+    {
+      sort: { index: -1 },
+      limit: 50,
+    }
+  ).fetch();
   const roundsReady = roundsSub.ready() && !!rounds;
   return {
     roundsReady,

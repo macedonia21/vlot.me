@@ -1,28 +1,21 @@
 /**********************************************************************************************************************/
 /* MODIFIED CSS */
-html {
-  position: relative;
-  min-height: 100% !important;
-}
-
-body {
-  font-family: 'Quicksand', sans-serif;
-  color: #21232a;
-  min-width: 360px;
-}
-
 main {
   padding-top: 30px;
   padding-bottom: 80px;
 }
 
-a {
-  text-decoration: none;
+a, a:hover {
+  color: unset !important;
+  text-decoration: none !important;
 }
 
 a:hover {
-  opacity: 0.6 !important;
-  text-decoration: none;
+  opacity: 0.7 !important;
+}
+
+*:focus {
+  outline: none !important;
 }
 
 /**********************************************************************************************************************/
@@ -58,6 +51,7 @@ a:hover {
 .list-group-item:last-child{
   border-bottom-left-radius: 1rem !important;
   border-bottom-right-radius: 1rem !important;
+  margin-bottom: 1.5rem !important;
 }
 .list-group-item-text {
    text-align: center;
@@ -112,6 +106,27 @@ h4.list-group-item-heading {
   font-weight: bold;
 }
 
+.unmatched {
+  color: #343a40;
+  border: 3px solid #343a40;
+  opacity: 0.5;
+}
+
+.matched {
+  color: #fc4a1a;
+  border: 3px solid #fc4a1a;
+}
+
+.delta-faded {
+  opacity: 0.5;
+}
+.delta-num {
+  color: unset;
+  border: none;
+  width: 61px;
+}
+/* RESULT NUMBER */
+
 /**********************************************************************************************************************/
 /* OFF-CANVAS SIDE BAR */
 .bm-burger-button {
@@ -155,7 +170,7 @@ h4.list-group-item-heading {
 .bm-menu {
   /*background: #373a47;*/
   background: #21232a;
-  padding: 2.5em 1.5em 0;
+  padding: 4em 1.5em 0 1.5em;
   font-size: 1.1em;
   line-height: 1.8em;
 }
@@ -179,6 +194,17 @@ h4.list-group-item-heading {
 /* Individual item */
 .bm-item {
   display: inline-block;
+  text-decoration: none;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.bm-item:hover {
+  text-decoration: none;
+}
+.bm-item.active {
+  color: #6c757d;
+  background-color: #13181b;
+  border-color: #13181b;
 }
 
 hr.bm-item {
@@ -192,3 +218,97 @@ hr.bm-item {
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3) !important;
 }
+
+/* FORM CONTROLS */
+.form-control:hover {
+  border-color: hsl(0,0%,70%);
+}
+.form-control:hover:focus {
+  border-color: #2684FF;
+}
+.form-control:hover:disabled {
+  border-color: #ced4da;
+}
+.form-control:disabled {
+  color: hsl(0,0%,60%);
+}
+
+.react-datepicker-wrapper {
+  display: block !important;
+}
+.react-datepicker {
+  font-family: 'Nunito-Regular', sans-serif;
+}
+.react-datepicker__close-icon::after {
+  background-color: transparent !important;
+  color: #21232a !important;
+  font-size: 16px !important;
+}
+/* FORM CONTROLS */
+
+/* ACTIVE OBJECT */
+.btn.active {
+  color: #fff;
+  background-color: #1e7e34;
+  border-color: #1c7430;
+}
+/* ACTIVE OBJECT */
+
+/* TOOLTIP */
+.__react_component_tooltip {
+  border-radius: 1rem;
+  -webkit-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.55);
+  -moz-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.55);
+  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.55);
+}
+/* TOOLTIP */
+
+/* Tool num selector */
+.tool-num-selector table {
+  width: 100%;
+}
+.tool-num-selector table td {
+  text-align: center;
+}
+.tool-select-num {
+  display: inline-block;
+  width: 30px;
+  height: 32px;
+  line-height: 18px;
+  font-size: 18px;
+  background: none;
+  color: #fc4a1a;
+  border-top: 3px solid #fc4a1a;
+  border-bottom: 3px solid #fc4a1a;
+  margin: 4px 5px;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-transition: all .4s ease-out;
+  -moz-transition: all .4s ease-out;
+  transition: all .4s ease-out;
+}
+.tool-select-num:hover {
+  //color: #fd8666;
+  //border-top-color: #fd8666;
+  //border-bottom-color: #fd8666;
+}
+.tool-select-num.active {
+  background-color: #fc4a1a;
+  color: #FFFFFF;
+  border-top-color: #fc4a1a;
+  border-bottom-color: #fc4a1a;
+}
+.tool-select-num.active:hover {
+  background-color: #f93803;
+  border-top-color: #f93803;
+  border-bottom-color: #f93803;
+}
+/* Tool num selector */
+/* React Switch */
+.react-switch {
+  vertical-align: middle;
+}
+/* React Switch */

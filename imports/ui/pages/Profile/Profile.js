@@ -61,297 +61,6 @@ class Profile extends React.Component {
       isOldPasswordShown: false,
       isNewPasswordShown: false,
       isConfirmPasswordShown: false,
-      reactSelect: {
-        genderValue: { value: 'M', label: 'Male' },
-        genderOptions: [
-          {
-            value: 'M',
-            label: 'Male',
-          },
-          {
-            value: 'F',
-            label: 'Female',
-          },
-        ],
-        titleValue: { value: 'C', label: 'Consultant' },
-        titleOptions: [
-          {
-            value: 'BA',
-            label: 'Business Analysis',
-          },
-          {
-            value: 'C',
-            label: 'Consultant',
-          },
-          {
-            value: 'SC',
-            label: 'Senior Consultant',
-          },
-          {
-            value: 'M',
-            label: 'Manager',
-          },
-          {
-            value: 'SM',
-            label: 'Senior Manager',
-          },
-          {
-            value: 'D',
-            label: 'Director',
-          },
-          {
-            value: 'P',
-            label: 'Partner',
-          },
-        ],
-        empTypeValue: { value: 'Permanent', label: 'Permanent' },
-        empTypeOptions: [
-          {
-            value: 'Permanent',
-            label: 'Permanent',
-          },
-          {
-            value: 'Contractor',
-            label: 'Contractor',
-          },
-        ],
-        countryValue: {
-          value: 'Vietnam',
-          label: 'Vietnam',
-          isBaseDisabled: false,
-          isEntCodeDisabled: false,
-        },
-        countryOptions: [
-          {
-            value: 'Brunei',
-            label: 'Brunei',
-            isDisabled: true,
-            isBaseDisabled: true,
-            isEntCodeDisabled: true,
-          },
-          {
-            value: 'Indonesia',
-            label: 'Indonesia',
-            isDisabled: true,
-            isBaseDisabled: true,
-            isEntCodeDisabled: true,
-          },
-          {
-            value: 'Myanmar',
-            label: 'Myanmar',
-            isDisabled: true,
-            isBaseDisabled: true,
-            isEntCodeDisabled: true,
-          },
-          {
-            value: 'Malaysia',
-            label: 'Malaysia',
-            isBaseDisabled: true,
-            isEntCodeDisabled: false,
-          },
-          {
-            value: 'Philippines',
-            label: 'Philippines',
-            isDisabled: true,
-            isBaseDisabled: true,
-            isEntCodeDisabled: true,
-          },
-          {
-            value: 'Singapore',
-            label: 'Singapore',
-            isBaseDisabled: true,
-            isEntCodeDisabled: false,
-          },
-          {
-            value: 'Thailand',
-            label: 'Thailand',
-            isDisabled: true,
-            isBaseDisabled: true,
-            isEntCodeDisabled: true,
-          },
-          {
-            value: 'Vietnam',
-            label: 'Vietnam',
-            isBaseDisabled: false,
-            isEntCodeDisabled: false,
-          },
-        ],
-        baseSelectDisabled: false,
-        baseValue: {
-          value: 'HCM',
-          label: 'Ho Chi Minh',
-          country: 'Vietnam',
-        },
-        baseAllOptions: [
-          {
-            value: 'BS',
-            label: 'Brunei',
-            country: 'Brunei',
-          },
-          {
-            value: 'JK',
-            label: 'Indonesia',
-            country: 'Indonesia',
-          },
-          {
-            value: 'YG',
-            label: 'Myanmar',
-            country: 'Myanmar',
-          },
-          {
-            value: 'KL',
-            label: 'Malaysia',
-            country: 'Malaysia',
-          },
-          {
-            value: 'MN',
-            label: 'Philippines',
-            country: 'Philippines',
-          },
-          {
-            value: 'SG',
-            label: 'Singapore',
-            country: 'Singapore',
-          },
-          {
-            value: 'BK',
-            label: 'Thailand',
-            country: 'Thailand',
-          },
-          {
-            value: 'HCM',
-            label: 'Ho Chi Minh',
-            country: 'Vietnam',
-          },
-          {
-            value: 'HN',
-            label: 'Ha Noi',
-            country: 'Vietnam',
-          },
-        ],
-        baseOptions: [
-          {
-            value: 'HCM',
-            label: 'Ho Chi Minh',
-            country: 'Vietnam',
-          },
-          {
-            value: 'HN',
-            label: 'Ha Noi',
-            country: 'Vietnam',
-          },
-        ],
-        entCodeSelectDisabled: false,
-        entCodeValue: {
-          value: 'VN1C',
-          label: '(VN1C) Deloitte Consulting Vietnam Co Ltd',
-          country: 'Vietnam',
-        },
-        entCodeAllOptions: [
-          {
-            value: 'ID1C',
-            label: '(ID1C) PT Deloitte Consulting',
-            country: 'Indonesia',
-          },
-          {
-            value: 'ID2C',
-            label: '(ID2C) PT DC Solutions',
-            country: 'Indonesia',
-          },
-          {
-            value: 'MM1C',
-            label: '(MM1C) Deloitte Consulting (Myanmar Limited)',
-            country: 'Myanmar',
-          },
-          {
-            value: 'MM2C',
-            label: '(MM2C) Deloitte Consulting (Myanmar Limited)',
-            country: 'Myanmar',
-          },
-          {
-            value: 'MY1C',
-            label: '(MY1C) Deloitte Consulting (SEA) Sdn Bhd',
-            country: 'Malaysia',
-          },
-          {
-            value: 'MY2C',
-            label: '(MY2C) Deloitte Consulting Malaysia Sdn Bhd',
-            country: 'Malaysia',
-          },
-          {
-            value: 'MY3C',
-            label: '(MY3C) DC Technology Solutions',
-            country: 'Malaysia',
-          },
-          {
-            value: 'PH1C',
-            label: '(PH1C) Deloitte & Touche Consulting Grp / ICS Pte Ltd ',
-            country: 'Philippines',
-          },
-          {
-            value: 'SG1C',
-            label: '(SG1C) Deloitte Consulting Pte Ltd',
-            country: 'Singapore',
-          },
-          {
-            value: 'BN1C',
-            label: '(BN1C) Deloitte Consulting Pte Ltd',
-            country: 'Brunei',
-          },
-          {
-            value: 'BN2C',
-            label: '(BN2C) Deloitte Consulting Pte Ltd',
-            country: 'Brunei',
-          },
-          {
-            value: 'SG2C',
-            label: '(SG2C) Deloitte Consulting / ICS Pte Ltd',
-            country: 'Singapore',
-          },
-          {
-            value: 'SG9C',
-            label: '(SG9C) Deloitte Consulting (SEA) Holdings Pte Ltd',
-            country: 'Singapore',
-          },
-          {
-            value: 'TH1C',
-            label: '(TH1C) Deloitte Consulting Limited',
-            country: 'Thailand',
-          },
-          {
-            value: 'TH2C',
-            label: '(TH2C) Deloitte Touche Tohmatsu Jaiyos Advisory Co., Ltd. ',
-            country: 'Thailand',
-          },
-          {
-            value: 'TH9C',
-            label: '(TH9C) Deloitte Holding Limited',
-            country: 'Thailand',
-          },
-          {
-            value: 'VN1C',
-            label: '(VN1C) Deloitte Consulting Vietnam Co Ltd',
-            country: 'Vietnam',
-          },
-          {
-            value: 'VN2C',
-            label: '(VN2C) Branch Deloitte Consulting Vietnam Co Ltd in Hanoi',
-            country: 'Vietnam',
-          },
-        ],
-        entCodeOptions: [
-          {
-            value: 'VN1C',
-            label: '(VN1C) Deloitte Consulting Vietnam Co Ltd',
-            country: 'Vietnam',
-          },
-          {
-            value: 'VN2C',
-            label: '(VN2C) Branch Deloitte Consulting Vietnam Co Ltd in Hanoi',
-            country: 'Vietnam',
-          },
-        ],
-      },
       oldPass: '',
       newPass: '',
       retypeNewPass: '',
@@ -364,28 +73,29 @@ class Profile extends React.Component {
     this.handleOldPasswordShow = this.handleOldPasswordShow.bind(this);
     this.handleNewPasswordShow = this.handleNewPasswordShow.bind(this);
     this.handleConfirmPasswordShow = this.handleConfirmPasswordShow.bind(this);
-    // this.handlePasswordStrength = this.handlePasswordStrength.bind(this);
   }
 
   componentWillMount() {
-    if (!Meteor.userId()) {
-      return this.props.history.push('/login');
+    if (
+      !Meteor.userId() ||
+      (!Roles.userIsInRole(Meteor.userId(), 'superadmin') &&
+        !Roles.userIsInRole(Meteor.userId(), 'admin'))
+    ) {
+      return this.props.history.push('/not-found');
     }
   }
 
-  shouldComponentUpdate(nextProps) {
-    if (!Meteor.userId()) {
-      nextProps.history.push('/login');
+  shouldComponentUpdate(nextProps, nextState) {
+    if (
+      !Meteor.userId() &&
+      (Roles.userIsInRole(Meteor.userId(), 'superadmin') ||
+        Roles.userIsInRole(Meteor.userId(), 'admin'))
+    ) {
+      nextProps.history.push('/not-found');
       return false;
     }
-    return true;
+    return nextProps !== this.props || nextState !== this.state;
   }
-  //
-  // handlePasswordStrength(newPass) {
-  //   this.setState({
-  //
-  //   });
-  // }
 
   handleOldPasswordShow() {
     this.setState({
@@ -449,9 +159,9 @@ class Profile extends React.Component {
         );
         setTimeout(() => {
           Meteor.logout(() => {
-            this.props.history.push('/');
+            this.props.history.push('/ketqua');
           });
-        }, 3000);
+        }, 1000);
       }
     });
   }
@@ -462,7 +172,6 @@ class Profile extends React.Component {
       isOldPasswordShown,
       isNewPasswordShown,
       isConfirmPasswordShown,
-      reactSelect,
       oldPass,
       newPass,
       retypeNewPass,
@@ -473,347 +182,12 @@ class Profile extends React.Component {
       return null;
     }
 
-    const reactSelectStyle = {
-      control: (provided, state) => ({
-        ...provided,
-        backgroundColor: state.isDisabled ? '#e9ecef' : '#fff',
-        borderColor: state.isFocused ? '#80bdff' : '#ced4da',
-        outline: state.isFocused ? 0 : null,
-        boxShadow: state.isFocused
-          ? '0 0 0 0.2rem rgba(0, 123, 255, 0.25)'
-          : '',
-      }),
-    };
-    const defaultGenderOption = user
-      ? _.findWhere(reactSelect.genderOptions, { value: user.profile.gender })
-      : null;
-    reactSelect.genderValue = defaultGenderOption;
-    const defaultTitleOption = user
-      ? _.findWhere(reactSelect.titleOptions, { value: user.profile.posTitle })
-      : null;
-    reactSelect.titleValue = defaultTitleOption;
-    const defaultEmpTypeOption = user
-      ? _.findWhere(reactSelect.empTypeOptions, { value: user.profile.empType })
-      : null;
-    reactSelect.empTypeValue = defaultEmpTypeOption;
-    const defaultCountryOption = user
-      ? _.findWhere(reactSelect.countryOptions, { value: user.profile.country })
-      : null;
-    reactSelect.countryValue = defaultCountryOption;
-    const defaultBaseOption = user
-      ? _.findWhere(reactSelect.baseAllOptions, {
-          value: user.profile.base,
-        })
-      : null;
-    reactSelect.baseValue = defaultBaseOption;
-    reactSelect.baseOptions = user
-      ? _.where(reactSelect.baseAllOptions, {
-          country: user.profile.country,
-        })
-      : null;
-    reactSelect.baseSelectDisabled = user
-      ? user.profile.country !== 'Vietnam'
-      : false;
-    const defaultEntCodeOption = user
-      ? _.findWhere(reactSelect.entCodeAllOptions, {
-          value: user.profile.entCode,
-        })
-      : null;
-    reactSelect.entCodeValue = defaultEntCodeOption;
-    reactSelect.entCodeOptions = user
-      ? _.where(reactSelect.entCodeAllOptions, {
-          country: user.profile.country,
-        })
-      : null;
-    reactSelect.entCodeSelectDisabled = user
-      ? user.profile.country !== 'Vietnam'
-      : false;
-
     return (
       <section className="profile-page">
         <div className="card mx-auto" style={{ maxWidth: '80%' }}>
           <div className="card-header">
             <div className="card-body">
-              <h1
-                className="card-title text-center dropdown-toggle"
-                data-toggle="collapse"
-                href="#collapseProfile"
-                aria-expanded="false"
-                aria-controls="collapseProfile"
-              >
-                <span className="title-wrap">Employee Profile</span>
-              </h1>
-              <div className="collapse" id="collapseProfile">
-                {usersReady && (
-                  <form>
-                    <div className="row">
-                      {/* <!-- First Col --> */}
-                      <div className="col-md-4">
-                        {/* <!-- Email --> */}
-                        <div className="form-group">
-                          <label htmlFor="email">E-Mail Address</label>
-                          <input
-                            id="email"
-                            type="email"
-                            className="form-control"
-                            name="email"
-                            value={user.profile.email}
-                            required
-                            disabled
-                          />
-                        </div>
-
-                        {/* <!-- Password --> */}
-                        <div className="form-group">
-                          <label htmlFor="password">Password</label>
-                          <input
-                            id="password"
-                            type="password"
-                            className="form-control"
-                            name="password"
-                            value=""
-                            required
-                            disabled
-                          />
-                        </div>
-
-                        {/* <!-- First Name --> */}
-                        <div className="form-group">
-                          <label htmlFor="firstname">First Name</label>
-                          <input
-                            id="firstname"
-                            type="text"
-                            className="form-control"
-                            name="firstname"
-                            value={user.profile.firstName}
-                            required
-                            disabled
-                          />
-                        </div>
-
-                        {/* <!-- Last Name --> */}
-                        <div className="form-group">
-                          <label htmlFor="lastname">Last Name</label>
-                          <input
-                            id="lastname"
-                            type="text"
-                            className="form-control"
-                            name="lastname"
-                            value={user.profile.lastName}
-                            required
-                            disabled
-                          />
-                        </div>
-
-                        {/* <!-- VN Name --> */}
-                        <div className="form-group">
-                          <label htmlFor="vnname">Vietnamese Name</label>
-                          <input
-                            id="vnname"
-                            type="text"
-                            className="form-control"
-                            name="vnname"
-                            value={user.profile.vnName}
-                            required
-                            disabled
-                          />
-                        </div>
-
-                        {/* <!-- Gender --> */}
-                        <div className="form-group">
-                          <label htmlFor="gender">Gender</label>
-                          <Select
-                            defaultValue={defaultGenderOption}
-                            value={reactSelect.genderValue}
-                            options={reactSelect.genderOptions}
-                            placeholder="Select Gender"
-                            styles={reactSelectStyle}
-                            isSearchable={false}
-                            isDisabled
-                          />
-                        </div>
-                      </div>
-
-                      {/* <!-- Second Col --> */}
-                      <div className="col-md-4">
-                        {/* <!-- Join Date --> */}
-                        <div className="form-group">
-                          <label htmlFor="joindate">Join Date</label>
-                          <DatePicker
-                            className="form-control"
-                            selected={user.profile.joinDate}
-                            dateFormat="MMM dd, yyyy"
-                            required
-                            disabled
-                          />
-                        </div>
-
-                        {/* <!-- Talents --> */}
-                        <div className="form-group">
-                          <label htmlFor="talents">Capabilities</label>
-                          <TagsInput
-                            id="talents"
-                            className="form-control form-control-disabled"
-                            value={user.profile.talents}
-                            maxTags={4}
-                            disabled
-                          />
-                        </div>
-
-                        {/* <!-- Position Title --> */}
-                        <div className="form-group">
-                          <label htmlFor="postitle">Position Title</label>
-                          <Select
-                            defaultValue={defaultTitleOption}
-                            value={reactSelect.titleValue}
-                            options={reactSelect.titleOptions}
-                            placeholder="Select Position Title"
-                            styles={reactSelectStyle}
-                            isSearchable={false}
-                            isDisabled
-                          />
-                        </div>
-
-                        {/* <!-- Job Level --> */}
-                        <div className="form-group">
-                          <label htmlFor="joblevel">Job Level</label>
-                          <input
-                            id="joblevel"
-                            type="text"
-                            className="form-control"
-                            name="joblevel"
-                            value=""
-                            required
-                            disabled
-                          />
-                        </div>
-
-                        {/* <!-- Base --> */}
-                        <div className="form-group">
-                          <label htmlFor="base">Base</label>
-                          <Select
-                            defaultValue={defaultBaseOption}
-                            value={reactSelect.baseValue}
-                            options={reactSelect.baseOptions}
-                            placeholder="Select Base"
-                            styles={reactSelectStyle}
-                            isSearchable={false}
-                            valueKey="value"
-                            labelKey="label"
-                            isDisabled
-                          />
-                        </div>
-
-                        {/* <!-- Entity Code --> */}
-                        <div className="form-group">
-                          <label htmlFor="entcode">Entity Code</label>
-                          <Select
-                            defaultValue={defaultEmpTypeOption}
-                            value={reactSelect.entCodeValue}
-                            options={reactSelect.entCodeOptions}
-                            placeholder="Select Entity Code"
-                            styles={reactSelectStyle}
-                            isSearchable={false}
-                            valueKey="value"
-                            labelKey="label"
-                            isDisabled
-                          />
-                        </div>
-                      </div>
-
-                      {/* <!-- Third Col --> */}
-                      <div className="col-md-4">
-                        {/* <!-- Country --> */}
-                        <div className="form-group">
-                          <label htmlFor="country">Country</label>
-                          <Select
-                            defaultValue={defaultCountryOption}
-                            value={reactSelect.countryValue}
-                            options={reactSelect.countryOptions}
-                            placeholder="Select Country"
-                            styles={reactSelectStyle}
-                            isSearchable={false}
-                            isDisabled
-                          />
-                        </div>
-
-                        {/* <!-- Employment Type --> */}
-                        <div className="form-group">
-                          <label htmlFor="emptype">Employment Type</label>
-                          <Select
-                            defaultValue={defaultEmpTypeOption}
-                            value={reactSelect.empTypeValue}
-                            options={reactSelect.empTypeOptions}
-                            placeholder="Select Employment Type"
-                            styles={reactSelectStyle}
-                            isSearchable={false}
-                            isDisabled
-                          />
-                        </div>
-
-                        {/* <!-- Hours Per Week --> */}
-                        <div className="form-group">
-                          <label htmlFor="hpw">Hours Per Week</label>
-                          <input
-                            id="hpw"
-                            type="number"
-                            max={40}
-                            min={0}
-                            className="form-control"
-                            name="hpw"
-                            value={user.profile.hPW || 0}
-                            disabled
-                          />
-                        </div>
-
-                        {/* <!-- Cost Center --> */}
-                        <div className="form-group">
-                          <label htmlFor="costcenter">Cost Center</label>
-                          <input
-                            id="costcenter"
-                            type="text"
-                            className="form-control"
-                            name="costcenter"
-                            value={user.profile.costCenter}
-                            required
-                            disabled
-                          />
-                        </div>
-
-                        {/* <!-- Portfolios --> */}
-                        <div className="form-group">
-                          <label htmlFor="portfolios">Portfolios</label>
-                          <input
-                            id="portfolios"
-                            type="text"
-                            className="form-control"
-                            name="portfolios"
-                            value={user.profile.portfolios}
-                            required
-                            disabled
-                          />
-                        </div>
-
-                        {/* <!-- Offering --> */}
-                        <div className="form-group">
-                          <label htmlFor="offering">Offering</label>
-                          <input
-                            id="offering"
-                            type="text"
-                            className="form-control"
-                            name="offering"
-                            value={user.profile.offering}
-                            required
-                            disabled
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                )}
-              </div>
-              <hr />
-              <h1 className="card-title text-center">Change Password</h1>
+              <h1 className="card-title text-center">Đổi mật khấu</h1>
               {usersReady && (
                 <form onSubmit={this.handleSubmit}>
                   <div className="row">
@@ -821,7 +195,7 @@ class Profile extends React.Component {
                     <div className="col-md-4">
                       {/* <!-- Old Password --> */}
                       <div className="form-group">
-                        <label htmlFor="oldpassword">Old Password</label>
+                        <label htmlFor="oldpassword">Mật khấu cũ</label>
                         <div className="input-group">
                           <input
                             id="oldpassword"
@@ -861,7 +235,7 @@ class Profile extends React.Component {
                         className="form-group"
                         style={{ marginBottom: '5px' }}
                       >
-                        <label htmlFor="newpassword">New Password</label>
+                        <label htmlFor="newpassword">Mật khấu mới</label>
                         <div className="input-group">
                           <input
                             id="newpassword"
@@ -916,9 +290,7 @@ class Profile extends React.Component {
                     <div className="col-md-4">
                       {/* <!-- Retype New Password --> */}
                       <div className="form-group">
-                        <label htmlFor="newpasswordre">
-                          Retype New Password
-                        </label>
+                        <label htmlFor="newpasswordre">Nhập lại mật khấu</label>
                         <div className="input-group">
                           <input
                             id="newpasswordre"
@@ -956,7 +328,7 @@ class Profile extends React.Component {
                       type="submit"
                       className="btn btn-primary btn-block mb-2"
                     >
-                      Change Password
+                      Đổi mật khấu
                     </button>
                   </div>
                 </form>

@@ -66,11 +66,11 @@ const LoggedInNav = () => (
           type="button"
           className="dropdown-item"
           onClick={() => {
-            NotificationManager.success('Logout', 'Success', 3000);
+            NotificationManager.success('Đăng xuất', 'Thành công', 3000);
             setTimeout(Meteor.logout(), 100);
           }}
         >
-          Logout
+          Đăng xuất
         </button>
       </NavLink>
     </li>
