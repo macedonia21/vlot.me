@@ -6,20 +6,6 @@ import { NavLink } from 'react-router-dom';
 import './Propability.scss';
 
 class Propability extends React.Component {
-  componentWillMount() {
-    if (Meteor.userId()) {
-      return this.props.history.push('/report');
-    }
-  }
-
-  shouldComponentUpdate(nextProps) {
-    if (Meteor.userId()) {
-      nextProps.history.push('/report');
-      return false;
-    }
-    return true;
-  }
-
   render() {
     if (this.props.loggedIn) {
       return null;
