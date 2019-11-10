@@ -7,9 +7,6 @@ import './Propability.scss';
 
 class Propability extends React.Component {
   render() {
-    if (this.props.loggedIn) {
-      return null;
-    }
     return (
       <div className="container">
         <h1>Xác suất</h1>
