@@ -133,7 +133,7 @@ class Login extends React.Component {
                   <ReCAPTCHA
                     ref={this.state.recaptchaRef}
                     size="invisible"
-                    sitekey="6Lcy9cEUAAAAABwzST0q1Dx57nPKT4jGbpVIqTEA"
+                    sitekey="6Ldm1MIUAAAAAGaOF_61Bogwm_oHt9KShuWXBNtB"
                   />
                 </div>
                 <div className="form-group no-margin">
