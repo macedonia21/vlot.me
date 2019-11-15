@@ -19,7 +19,12 @@ allowImageOrigin.forEach(o => BrowserPolicy.content.allowImageOrigin(o));
 /**
  * allowed scripts
  */
-const allowScriptOrigin = ['*.gstatic.com', '*.googleapis.com', '*.google.com'];
+const allowScriptOrigin = [
+  '*.gstatic.com',
+  '*.googleapis.com',
+  '*.google.com',
+  '*.cloudflare.com',
+];
 allowScriptOrigin.forEach(o => BrowserPolicy.content.allowScriptOrigin(o));
 
 /**
@@ -31,5 +36,10 @@ allowStyleOrigin.forEach(o => BrowserPolicy.content.allowStyleOrigin(o));
 /**
  * allowed all
  */
-const allowOriginForAll = ['*.gstatic.com', '*.googleapis.com', '*.google.com'];
+const allowOriginForAll = [
+  '*.gstatic.com',
+  '*.googleapis.com',
+  '*.google.com',
+  '*.cloudflare.com',
+];
 allowOriginForAll.forEach(o => BrowserPolicy.content.allowOriginForAll(o));

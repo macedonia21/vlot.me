@@ -664,7 +664,7 @@ if (Meteor.isServer) {
           if (result) {
             instance.replicate({
               in: {
-                minutes: 1,
+                minutes: 30,
               },
             });
 
@@ -793,7 +793,7 @@ if (Meteor.isServer) {
           } else {
             instance.reschedule({
               in: {
-                minutes: 1,
+                minutes: 30,
               },
             });
           }
