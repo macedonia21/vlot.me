@@ -19,6 +19,7 @@ class Login extends React.Component {
       email: '',
       password: '',
       isPasswordShown: false,
+      recaptchaRef: React.createRef(),
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePasswordShow = this.handlePasswordShow.bind(this);
@@ -47,6 +48,7 @@ class Login extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.state.recaptchaRef.current.execute();
     const { email, password } = this.state;
     Meteor.loginWithPassword(email, password, err => {
       if (err) {
@@ -66,6 +68,8 @@ class Login extends React.Component {
     if (this.props.loggedIn) {
       return null;
     }
+
+    // const recaptchaRef = React.createRef();
 
     return (
       <section className="login-page">
@@ -127,8 +131,9 @@ class Login extends React.Component {
                 </div>
                 <div className="form-group no-margin text-webkit-center">
                   <ReCAPTCHA
+                    ref={this.state.recaptchaRef}
+                    size="invisible"
                     sitekey="6Lcy9cEUAAAAABwzST0q1Dx57nPKT4jGbpVIqTEA"
-                    onChange={this.reCaptchaChange}
                   />
                 </div>
                 <div className="form-group no-margin">
