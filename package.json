@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.4.5",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "bootstrap": "^4.3.1",
     "cleave.js": "^1.5.3",
     "date-fns": "^2.6.0",
